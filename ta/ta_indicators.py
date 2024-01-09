@@ -74,6 +74,13 @@ class Indicators:
         # return 1
         return stcf
 
+
+
+    def mcgnd(self,length=14):
+        mcginley = ta.mcgd(self.df['close'], n=length)
+        print("d")
+
+
     def williamsR(self, number):
         willr = ta.willr(self.df["high"], self.df["low"], self.df["close"], )
         will = willr.values.tolist()

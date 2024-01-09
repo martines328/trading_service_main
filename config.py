@@ -14,18 +14,18 @@ apisecret_spot = '6D01DR6MCI21ZeihNJZR3wgDYMkucHHgO4KRzEg2qtDKGcvaAQPb0IfDKngqI9
 timestamp = int(time.time() * 1000)
 recvWindow = 5000
 
-#trend Strategy
-ts_symbol = "BNBUSDT"
-ts_trend_interval = '15m'
-ts_trend_start_time = '10 day ago UTC'
-ts_pos_amount = 0.1
-ts_delay_time = 10  #900
-ts_trailing_activation_percent = 0.9
-ts_callback_rate = 0.7
-
-ts_manage_pos_interval = '1h'
-ts_manage_start_time = '10 day ago UTC'
-ts_manage_delayt_time = 300 #in sec for 1hours manage
+# #trend Strategy
+# ts_symbol = "BNBUSDT"
+# ts_trend_interval = '15m'
+# ts_trend_start_time = '10 day ago UTC'
+# ts_pos_amount = 0.1
+# ts_delay_time = 10  #900
+# ts_trailing_activation_percent = 0.9
+# ts_callback_rate = 0.7
+#
+# ts_manage_pos_interval = '1h'
+# ts_manage_start_time = '10 day ago UTC'
+# ts_manage_delayt_time = 300 #in sec for 1hours manage
 
 
 
@@ -67,7 +67,7 @@ ts_macd_interval = '2h'
 ts_macd_interval_start_time = '15 day ago UTC'
 ts_macd_pos_amount = 101
 ts_macd_leverage = 7
-ts_macd_delay_time = 10  #7200 3600
+ts_macd_delay_time = 10  #300
 ts_macd_position_delay_time = 10  #60
 ts_macd_trailing_activation_percent = 2
 ts_macd_callback_rate = 1.9
