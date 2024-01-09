@@ -6,12 +6,10 @@ class Clietn_future_action():
 
     def change_position_margin_type(self,client,symbol, margin_type):
         response = client.futures_change_margin_type(symbol=symbol, marginType=margin_type)
-        print(response)
 
     def change_position_margin(self,client,trading_symbol ,position_amount,new_callBack_rate):
         response = client.futures_change_position_margin(symbol=trading_symbol, amount=abs(position_amount), type=1,
                                                          timestamp=config.timestamp, callbackRate=new_callBack_rate)
-        print(response)
 
     def check_open_position_bool(self, client, symbol: str) :
         pos = client.futures_position_information()
@@ -30,8 +28,7 @@ class Clietn_future_action():
                 pos_amount = float(order['positionAmt'])
                 entry_price = round(float(order['entryPrice']),price_round )
                 unrealized_profit = float(order['unRealizedProfit'])
-                print(
-                    f"Open Order - Symbol: {order['symbol']}, Side: {order['side']}, Type: {order['type']}, Quantity: {order['origQty']}, Price: {order['price']}")
+                # print(f"Open Order - Symbol: {order['symbol']}, Side: {order['side']}, Type: {order['type']}, Quantity: {order['origQty']}, Price: {order['price']}")
                 return  pos_amount, entry_price, unrealized_profit
 
 
