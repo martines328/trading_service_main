@@ -133,3 +133,5 @@ Control position MATICUSDT 01-09 17:13:macd1 - -0.0019298389781196024 signal1 - 
 Position profit - 0.76983
 Control position MATICUSDT 01-09 17:14:macd1 - -0.001967601215881909 signal1 - -0.001100360268651092 | macd2 - -0.0006406273906217619 signal2 - -0.0008835500318433876current_price - 0.7912 | supertrend1 - 0.8142 supertrend1 - 0.8142
 Position profit - 0.90105
+Control position MATICUSDT 01-09 17:15:macd1 - -0.0020620068102875644 signal1 - -0.001119241387532223 | macd2 - -0.0006406273906217619 signal2 - -0.0008835500318433876current_price - 0.7897 | supertrend1 - 0.8142 supertrend1 - 0.8142
+Position profit - 0.90982
