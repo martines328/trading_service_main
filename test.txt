@@ -1,0 +1,32 @@
+  # def test_callback(self, client):
+    #     symbol = "BTCUSDT"
+    #     amount = 0.003
+    #     callback = 0.3
+    #     new_callback = 2
+    #     future_orders = Orders()
+    #     future_orders.close_open_position_market(client,symbol,amount)
+    #     future_orders.cancel_all_open_orders(client, symbol)
+    #
+    #     position_order = self.order.placeBuyOrder(client, symbol, amount)
+    #     # current_price = float(self.price_service.get_current_price(symbol))
+    #     position_amount, entry_price, unrealized_profit = self.future_action.future_position_data(client,
+    #                                                                                               symbol,
+    #                                                                                               1)
+    #
+    #     activation = entry_price
+    #     # activation_price = "{:.4f}".format(activation)
+    #     activation_price = round(float(activation), 1)
+    #     trailing = self.order.long_trailing_stop(client, symbol, amount,
+    #                                              activation_price, callback)
+    #     time.sleep(10)
+    #
+    #     future_orders.cancel_all_open_orders(client, symbol)
+    #
+    #
+    #     # current_price = float(self.price_service.get_current_price(config.ts_macd_symbol))
+    #     # activation = (entry_price * first_block_activation / 100) + entry_price
+    #     # activation_price = "{:.4f}".format(activation)
+    #     activation_price = round(float(entry_price), 1)
+    #     # if current_price < activation_price:
+    #     trailing = self.order.long_trailing_stop(client, symbol, position_amount,
+    #                                                  activation_price+200, 0.1)

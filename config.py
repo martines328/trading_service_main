@@ -1,7 +1,7 @@
 import time
 
-api_key_real = "4zNlXjOY0R7P0risFtbrofDvzzPjXTZutdPa8PXoUZx7ypJVajAtfu9ollaPwkNI"
-api_secret_real = "k8p3ZmaFLOCTITWi2KeBb3tyMSbhtLmRtZC1lQjxWPwI4QA7fxAUPwKGsfnjz4Jt"
+api_key_real = "m3S7fP39dVm799Bm82JoZezWyK6pJcnTW0jT29KFzBwHTBlPtqnyTzxp4ruRcx1P"
+api_secret_real = "bwZavuplh3C3XqU1pi4UrOZtsSC6jQiyYpKNye8tHZj1H6dsuQtLAnjKHrlapg8P"
 
 
 BINANCE_API_KEY_testnet = "c918f6403af5360d974839e4d86c104014c12161753e1a5b5cf81e8fe42cef2d"
@@ -65,7 +65,7 @@ callback_rate = 0.5
 ts_macd_symbol = "MATICUSDT"
 ts_macd_interval = '2h'
 ts_macd_interval_start_time = '15 day ago UTC'
-ts_macd_pos_amount = 70
+ts_macd_pos_amount = 50
 ts_macd_leverage = 7
 ts_macd_delay_time = 300  #300
 ts_macd_position_delay_time = 60  #60

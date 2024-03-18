@@ -30,15 +30,12 @@ class Macd_sprtrnd_strategy_2h:
         macd_signal = 9
         super_trend_lenght = 10
         super_trend_multiplier = 1.33
-        mfi_lenght = 14
         logging.basicConfig(level=logging.INFO, filename="trading.log", filemode="w",
                             format="%(asctime)s %(levelname)s %(message)s")
 
-        current_time = datetime.now()
-        formatted_current_time = current_time.strftime("%m-%d %H:%M:")
-
         while True:
             try:
+
                 binance_client = self.client.create_binance_client()
                 data_frame = self.data_frame.get_data_frame(binance_client, config.ts_macd_symbol,
                                                             config.ts_macd_interval, config.ts_macd_interval_start_time)
@@ -63,7 +60,6 @@ class Macd_sprtrnd_strategy_2h:
                         indicators.supertrend(2, length=super_trend_lenght, multiplier=super_trend_multiplier,
                                               round_number=4))
 
-
                     if (macd_line_1 > signal_line_1 and macd_line_2 < signal_line_2
                             and super_trnd_1 < self.current_price):
                         self.long_macd_position(binance_client)
@@ -72,17 +68,21 @@ class Macd_sprtrnd_strategy_2h:
                             and super_trnd_1 > self.current_price):
                         self.short_macd_position(binance_client)
 
-                    if macd_line_1 > signal_line_1 and macd_line_2 > signal_line_2 and super_trnd_1 < self.current_price < super_trnd_2:
+                    if (macd_line_1 > signal_line_1 and macd_line_2 > signal_line_2 and super_trnd_1 < self.current_price
+                            and super_trnd_1 < super_trnd_2):
                         self.long_macd_position(binance_client)
 
-                    if macd_line_1 < signal_line_1 and macd_line_2 < signal_line_2 and super_trnd_1 > self.current_price > super_trnd_2:
+                    if (macd_line_1 < signal_line_1 and macd_line_2 < signal_line_2 and super_trnd_1 > self.current_price
+                            and super_trnd_1 > super_trnd_2):
                         self.short_macd_position(binance_client)
 
-
+                    current_time = datetime.now()
+                    formatted_current_time = current_time.strftime("%m-%d %H:%M:%S")
                     with open('macd_sptrndl_log.txt', 'a') as f:
-                        f.write(f"Witing position {config.ts_macd_symbol} {formatted_current_time}")
-                        f.write(f"macd1 - {macd_line_1} signal1 - {signal_line_1} | macd2 - {macd_line_2} signal2 - {signal_line_2}"
-                                f"current_price - {self.current_price} | supertrend1 - {super_trnd_2} supertrend1 - {super_trnd_2}\n")
+                        f.write(f"Witing position {config.ts_macd_symbol} {formatted_current_time}  ")
+                        f.write(
+                            f"macd1 - {macd_line_1} signal1 - {signal_line_1} | macd2 - {macd_line_2} signal2 - {signal_line_2}   "
+                            f"current_price - {self.current_price} | supertrend1 - {super_trnd_2} supertrend1 - {super_trnd_2}\n")
 
                 binance_client.close_connection()
 
@@ -158,10 +158,6 @@ class Macd_sprtrnd_strategy_2h:
         indicators = kwargs['indicators']
         current_price = float(self.price_service.get_current_price(config.ts_macd_symbol))
 
-        # data_frame = self.data_frame.get_data_frame(client, config.ts_macd_symbol,
-        #                                            config.ts_macd_interval, config.ts_macd_interval_start_time)
-        # indicators = Indicators(data_frame)
-
         super_trnd_1 = float(
             indicators.supertrend(1, length=super_trend_lenght, multiplier=super_trend_multiplier, round_number=4))
         super_trnd_2 = float(
@@ -173,30 +169,33 @@ class Macd_sprtrnd_strategy_2h:
         position_amount, entry_price, unrealized_profit = self.future_action.future_position_data(client,
                                                                                                   trading_symbol,
                                                                                                   config.ts_macd_round)
-        # self.control_trailing_callback(unrealized_profit=unrealized_profit, position_amount=position_amount,
-        #                                client=client,
-        #                                new_callBack_rate=2.5, trading_symbol=trading_symbol)
 
-        if macd_line_2 > signal_line_2 and (macd_line_1 < signal_line_1 or macd_line_1 == signal_line_1)and position_amount > 0:
+        self.control_trailing_callback(unrealized_profit=unrealized_profit, position_amount=position_amount,
+                                       client=client,
+                                       new_callBack_rate=2.5, trading_symbol=trading_symbol, entry_price=entry_price)
+        # close position when indicators change
+        if macd_line_2 > signal_line_2 and (
+                macd_line_1 < signal_line_1 or macd_line_1 == signal_line_1) and position_amount > 0:
             # close long change macd
             self.order.close_open_position_market(client, trading_symbol, position_amount)
             self.order.cancel_all_open_orders(client, trading_symbol)
 
-        elif macd_line_2 < signal_line_2 and (macd_line_1 > signal_line_1 or macd_line_1 == signal_line_1) and position_amount<0:
+        elif macd_line_2 < signal_line_2 and (
+                macd_line_1 > signal_line_1 or macd_line_1 == signal_line_1) and position_amount < 0:
             # close short change macd
             self.order.close_open_position_market(client, trading_symbol, position_amount)
             self.order.cancel_all_open_orders(client, trading_symbol)
 
-        elif macd_line_2 < signal_line_2 and macd_line_1 < signal_line_1 and super_trnd_2 > current_price > super_trnd_1 and position_amount <0:
+        elif macd_line_2 < signal_line_2 and macd_line_1 < signal_line_1 and super_trnd_2 > current_price > super_trnd_1 and position_amount < 0:
             # close short change supertrend
             self.order.close_open_position_market(client, trading_symbol, position_amount)
             self.order.cancel_all_open_orders(client, trading_symbol)
-        elif macd_line_2 > signal_line_2 and macd_line_1 > signal_line_1 and super_trnd_2 < current_price < super_trnd_1 and position_amount>0:
+        elif macd_line_2 > signal_line_2 and macd_line_1 > signal_line_1 and super_trnd_2 < current_price < super_trnd_1 and position_amount > 0:
             # close long change supertrenf
             self.order.close_open_position_market(client, trading_symbol, position_amount)
             self.order.cancel_all_open_orders(client, trading_symbol)
 
-
+        # close position when indicator
 
         current_time = datetime.now()
         formatted_current_time = current_time.strftime("%m-%d %H:%M:")
@@ -204,20 +203,64 @@ class Macd_sprtrnd_strategy_2h:
             f.write(f"Control position {config.ts_macd_symbol} {formatted_current_time}")
             f.write(f"macd1 - {macd_line_1} signal1 - {signal_line_1} | macd2 - {macd_line_2} signal2 - {signal_line_2}"
                     f"current_price - {self.current_price} | supertrend1 - {super_trnd_2} supertrend1 - {super_trnd_2}\n")
-            f.write( f"Position profit - {round(unrealized_profit,5)}\n")
+            f.write(f"Position profit - {round(unrealized_profit, 5)}\n")
 
-    # def control_trailing_callback(self, **kwargs):  # doesn't work wiyh crossed
-    #     unrealized_profit = float(kwargs['unrealized_profit'])
-    #     position_amount = float(kwargs['position_amount'])
-    #     client = kwargs['client']
-    #     new_callBack_rate = float(kwargs['new_callBack_rate'])
-    #     trading_symbol = kwargs['trading_symbol']
-    #
-    #     futures_action = Clietn_future_action()
-    #
-    #     if unrealized_profit > 3:
-    #         futures_action.change_position_margin_type(client, trading_symbol, "ISOLATED")
-    #         futures_action.change_position_margin(client, trading_symbol, position_amount, new_callBack_rate)
-    #         futures_action.change_position_margin_type(client, trading_symbol, "CROSSED")
-    #
-    #
+    def control_trailing_callback(self, **kwargs):  # doesn't work wiyh crossed
+        unrealized_profit = float(kwargs['unrealized_profit'])
+        position_amount = float(kwargs['position_amount'])
+        client = kwargs['client']
+        new_callBack_rate = float(kwargs['new_callBack_rate'])
+        trading_symbol = kwargs['trading_symbol']
+        entry_price = kwargs['entry_price']
+
+        futures_action = Clietn_future_action()
+        future_orders = Orders()
+
+        first_block = 3
+        first_block_activation = 3.5
+        second_block = 7
+        second_block_activation = 7.5
+
+        first_block_callback = 2.5
+        second_block_callback = 5
+
+        if second_block > unrealized_profit > first_block:
+            if position_amount > 0:
+                current_price = float(self.price_service.get_current_price(config.ts_macd_symbol))
+                activation = (entry_price * first_block_activation / 100) + entry_price
+                # activation_price = "{:.4f}".format(activation)
+                activation_price = round(float(activation), config.ts_macd_round)
+                if current_price < activation_price:
+                    future_orders.cancel_all_open_orders(client, trading_symbol)
+                    trailing = self.order.long_trailing_stop(client, config.ts_macd_symbol, config.ts_macd_pos_amount,
+                                                             activation_price, first_block_callback)
+
+
+            elif position_amount < 0:
+                current_price = float(self.price_service.get_current_price(config.ts_macd_symbol))
+                activation = entry_price - (entry_price * first_block_activation / 100)
+                activation_price = round(float(activation), config.ts_macd_round)
+                if current_price > activation_price:
+                    future_orders.cancel_all_open_orders(client, trading_symbol)
+                    trailing = self.order.short_trailing_stop(client, config.ts_macd_symbol, config.ts_macd_pos_amount,
+                                                              activation_price, first_block_callback)
+        if unrealized_profit > second_block:
+            if position_amount > 0:
+                current_price = float(self.price_service.get_current_price(config.ts_macd_symbol))
+                activation = (entry_price * second_block_activation / 100) + entry_price
+                # activation_price = "{:.4f}".format(activation)
+                activation_price = round(float(activation), config.ts_macd_round)
+                if current_price < activation_price:
+                    future_orders.cancel_all_open_orders(client, trading_symbol)
+                    trailing = self.order.long_trailing_stop(client, config.ts_macd_symbol, config.ts_macd_pos_amount,
+                                                             activation_price, second_block_callback)
+
+
+            elif position_amount < 0:
+                current_price = float(self.price_service.get_current_price(config.ts_macd_symbol))
+                activation = current_price - (current_price * second_block_activation / 100)
+                activation_price = round(float(activation), config.ts_macd_round)
+                if current_price > activation_price:
+                    future_orders.cancel_all_open_orders(client, trading_symbol)
+                    trailing = self.order.short_trailing_stop(client, config.ts_macd_symbol, config.ts_macd_pos_amount,
+                                                              activation_price, second_block_callback)
