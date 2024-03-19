@@ -1,0 +1,5 @@
+requests~=2.31.0
+pandas~=2.1.0
+pandas-ta~=0.3.14b
+python-binance~=1.0.19
+numpy~=1.25.2

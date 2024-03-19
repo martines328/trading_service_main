@@ -425,3 +425,105 @@ Control position MATICUSDT 03-18 16:24:macd1 - -0.008329005560367975 signal1 - -
 Position profit - 0.31201
 Control position MATICUSDT 03-18 16:25:macd1 - -0.008310124441486932 signal1 - -0.008364156269213253 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0465 | supertrend1 - 1.077 supertrend1 - 1.077
 Position profit - 0.3431
+Control position MATICUSDT 03-18 16:26:macd1 - -0.008234599965962541 signal1 - -0.008349051374108376 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0476 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.23815
+Control position MATICUSDT 03-18 16:27:macd1 - -0.008228306259668638 signal1 - -0.008347792632849595 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0479 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.19818
+Control position MATICUSDT 03-18 16:28:macd1 - -0.008203131434493915 signal1 - -0.00834275766781465 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0481 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.185
+Control position MATICUSDT 03-18 16:29:macd1 - -0.008165369196731831 signal1 - -0.008335205220262234 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0487 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.4
+Control position MATICUSDT 03-18 16:30:macd1 - -0.008461173392535937 signal1 - -0.008394366059423055 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0441 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.35901
+Control position MATICUSDT 03-18 16:31:macd1 - -0.00841711744847995 signal1 - -0.008385554870611857 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.045 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.38844
+Control position MATICUSDT 03-18 16:32:macd1 - -0.008454879686242256 signal1 - -0.008393107318164318 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0439 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.49
+Control position MATICUSDT 03-18 16:33:macd1 - -0.008549285280647911 signal1 - -0.00841198843704545 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0429 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.58
+Control position MATICUSDT 03-18 16:34:macd1 - -0.008694040525403013 signal1 - -0.00844093948599647 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0404 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.5948
+Control position MATICUSDT 03-18 16:35:macd1 - -0.008681453112815651 signal1 - -0.008438422003478998 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0406 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.715
+Control position MATICUSDT 03-18 16:36:macd1 - -0.008882851714214102 signal1 - -0.008478701723758688 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0373 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.73433
+Control position MATICUSDT 03-18 16:37:macd1 - -0.008819914651277072 signal1 - -0.008466114311171282 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0388 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.61473
+Control position MATICUSDT 03-18 16:38:macd1 - -0.008756977588340042 signal1 - -0.008453526898583877 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0394 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.60991
+Control position MATICUSDT 03-18 16:39:macd1 - -0.008744390175752681 signal1 - -0.008451009416066404 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.04 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.67689
+Control position MATICUSDT 03-18 16:40:macd1 - -0.00880103353239603 signal1 - -0.008462338087395074 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0387 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.67048
+Control position MATICUSDT 03-18 16:41:macd1 - -0.008826208357570975 signal1 - -0.008467373052430062 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0384 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.63262
+Control position MATICUSDT 03-18 16:42:macd1 - -0.008725509056871417 signal1 - -0.008447233192290151 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0399 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.81
+Control position MATICUSDT 03-18 16:43:macd1 - -0.008958376189738715 signal1 - -0.008493806618863611 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0361 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.755
+Control position MATICUSDT 03-18 16:44:macd1 - -0.008876558007920421 signal1 - -0.008477442982499951 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0375 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.80553
+Control position MATICUSDT 03-18 16:45:macd1 - -0.008958376189738715 signal1 - -0.008493806618863611 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0362 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.885
+Control position MATICUSDT 03-18 16:46:macd1 - -0.009077956609318871 signal1 - -0.008517722702779642 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0343 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.805
+Control position MATICUSDT 03-18 16:47:macd1 - -0.008958376189738715 signal1 - -0.008493806618863611 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0364 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.815
+Control position MATICUSDT 03-18 16:48:macd1 - -0.009015019546381842 signal1 - -0.008505135290192235 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0351 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.74599
+Control position MATICUSDT 03-18 16:49:macd1 - -0.008914320245682728 signal1 - -0.008484995430052412 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0372 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.67218
+Control position MATICUSDT 03-18 16:50:macd1 - -0.008788446119808446 signal1 - -0.008459820604877558 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0387 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.76
+Control position MATICUSDT 03-18 16:51:macd1 - -0.008939495070857673 signal1 - -0.008490030395087403 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0365 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.82842
+Control position MATICUSDT 03-18 16:52:macd1 - -0.008952082483445034 signal1 - -0.008492547877604874 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0364 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.94
+Control position MATICUSDT 03-18 16:53:macd1 - -0.009166068497431068 signal1 - -0.00853534508040208 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0328 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 1.055
+Control position MATICUSDT 03-18 16:54:macd1 - -0.009279355210717766 signal1 - -0.008558002423059421 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.031 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 1.11262
+Control position MATICUSDT 03-18 16:55:macd1 - -0.009348585979948476 signal1 - -0.008571848576905563 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.03 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 1.10534
+Control position MATICUSDT 03-18 16:56:macd1 - -0.009335998567361115 signal1 - -0.00856933109438809 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0303 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 1.14661
+Control position MATICUSDT 03-18 16:57:macd1 - -0.009398935630298144 signal1 - -0.008581918506975497 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0295 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 1.09426
+Control position MATICUSDT 03-18 16:58:macd1 - -0.009323411154773753 signal1 - -0.008566813611870618 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0304 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 1.02672
+Control position MATICUSDT 03-18 16:59:macd1 - -0.009210124441487055 signal1 - -0.008544156269213279 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0322 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.91403
+Control position MATICUSDT 03-18 17:00:macd1 - -0.009090544021906455 signal1 - -0.008520240185297158 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0343 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.855
+Control position MATICUSDT 03-18 17:01:macd1 - -0.009059075490437829 signal1 - -0.008513946479003434 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0347 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.82
+Control position MATICUSDT 03-18 17:02:macd1 - -0.008977257308619757 signal1 - -0.008497582842639819 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0357 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.775
+Control position MATICUSDT 03-18 17:03:macd1 - -0.008920613951976408 signal1 - -0.00848625417131115 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0364 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.76
+Control position MATICUSDT 03-18 17:04:macd1 - -0.008926907658270089 signal1 - -0.008487512912569885 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0369 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 0.815
+Control position MATICUSDT 03-18 17:06:macd1 - -0.009229005560368098 signal1 - -0.008547932492989487 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0316 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 1.13422
+Control position MATICUSDT 03-18 17:07:macd1 - -0.009398935630298144 signal1 - -0.008581918506975497 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0292 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 1.1851
+Control position MATICUSDT 03-18 17:08:macd1 - -0.009398935630298144 signal1 - -0.008581918506975497 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0292 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 1.12313
+Control position MATICUSDT 03-18 17:09:macd1 - -0.009367467098829518 signal1 - -0.008575624800681771 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0297 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 1.02558
+Control position MATICUSDT 03-18 17:10:macd1 - -0.009222711854074195 signal1 - -0.008546673751730707 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.032 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 1.015
+Control position MATICUSDT 03-18 17:11:macd1 - -0.009273061504424085 signal1 - -0.008556743681800684 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.032 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 1.02
+Control position MATICUSDT 03-18 17:12:macd1 - -0.009285648917011224 signal1 - -0.008559261164318113 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0306 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 1.01898
+Control position MATICUSDT 03-18 17:13:macd1 - -0.009279355210717766 signal1 - -0.008558002423059421 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0313 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 1.00863
+Control position MATICUSDT 03-18 17:14:macd1 - -0.009229005560368098 signal1 - -0.008547932492989487 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.032 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 1.105
+Control position MATICUSDT 03-18 17:15:macd1 - -0.009361173392535838 signal1 - -0.008574366059423036 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0294 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 1.1027
+Control position MATICUSDT 03-18 17:16:macd1 - -0.009367467098829518 signal1 - -0.008575624800681771 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0299 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 1.05941
+Control position MATICUSDT 03-18 17:17:macd1 - -0.009279355210717766 signal1 - -0.008558002423059421 | macd2 - -0.007546626561768521 signal2 - -0.008377664226144834current_price - 1.0311 | supertrend1 - 1.077 supertrend1 - 1.077
+Position profit - 1.16
