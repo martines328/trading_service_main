@@ -224,7 +224,7 @@ class Macd_sprtrnd_strategy_2h:
         second_block = 7
         second_block_activation = 7
 
-        first_block_callback = 2.5
+        first_block_callback = 2.8
         second_block_callback = 5
 
         if second_block > unrealized_profit > first_block:
