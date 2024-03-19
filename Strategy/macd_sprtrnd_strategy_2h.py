@@ -220,9 +220,9 @@ class Macd_sprtrnd_strategy_2h:
         future_orders = Orders()
 
         first_block = 3
-        first_block_activation = 3.5
+        first_block_activation = 3.2
         second_block = 7
-        second_block_activation = 7.5
+        second_block_activation = 7
 
         first_block_callback = 2.5
         second_block_callback = 5
@@ -237,6 +237,7 @@ class Macd_sprtrnd_strategy_2h:
                     future_orders.cancel_all_open_orders(client, trading_symbol)
                     trailing = self.order.long_trailing_stop(client, config.ts_macd_symbol, config.ts_macd_pos_amount,
                                                              activation_price, first_block_callback)
+                    print(f"Trailing  activated {first_block} callbaback {first_block_callback}")
 
 
             elif position_amount < 0:
@@ -247,6 +248,8 @@ class Macd_sprtrnd_strategy_2h:
                     future_orders.cancel_all_open_orders(client, trading_symbol)
                     trailing = self.order.short_trailing_stop(client, config.ts_macd_symbol, config.ts_macd_pos_amount,
                                                               activation_price, first_block_callback)
+                    print(f"Trailing  activated {first_block_activation} callbaback {first_block_callback}")
+
         if unrealized_profit > second_block:
             if position_amount > 0:
                 current_price = float(self.price_service.get_current_price(config.ts_macd_symbol))
@@ -257,6 +260,8 @@ class Macd_sprtrnd_strategy_2h:
                     future_orders.cancel_all_open_orders(client, trading_symbol)
                     trailing = self.order.long_trailing_stop(client, config.ts_macd_symbol, config.ts_macd_pos_amount,
                                                              activation_price, second_block_callback)
+                    print(f"Trailing  activated {second_block_activation} callbaback {second_block_callback}")
+
 
 
             elif position_amount < 0:
@@ -267,3 +272,6 @@ class Macd_sprtrnd_strategy_2h:
                     future_orders.cancel_all_open_orders(client, trading_symbol)
                     trailing = self.order.short_trailing_stop(client, config.ts_macd_symbol, config.ts_macd_pos_amount,
                                                               activation_price, second_block_callback)
+
+                    print(f"Trailing  activated {second_block_activation} callbaback {second_block_callback}")
+
