@@ -78,8 +78,9 @@ class Macd_sprtrnd_strategy_2h:
 
                     current_time = datetime.now()
                     formatted_current_time = current_time.strftime("%m-%d %H:%M:%S")
+                    print(f"Waiting position {config.ts_macd_symbol} {formatted_current_time}  current_price - {self.current_price} ")
                     with open('macd_sptrndl_log.txt', 'a') as f:
-                        f.write(f"Witing position {config.ts_macd_symbol} {formatted_current_time}  ")
+                        f.write(f"Waiting position {config.ts_macd_symbol} {formatted_current_time}  ")
                         f.write(
                             f"macd1 - {macd_line_1} signal1 - {signal_line_1} | macd2 - {macd_line_2} signal2 - {signal_line_2}   "
                             f"current_price - {self.current_price} | supertrend1 - {super_trnd_2} supertrend1 - {super_trnd_2}\n")
@@ -199,6 +200,8 @@ class Macd_sprtrnd_strategy_2h:
 
         current_time = datetime.now()
         formatted_current_time = current_time.strftime("%m-%d %H:%M:")
+        print(f"Control position {config.ts_macd_symbol} {formatted_current_time} current_price - {self.current_price}"
+              f" | supertrend1 - {super_trnd_2} supertrend1 - {super_trnd_2} Position profit - {round(unrealized_profit, 5)}\n")
         with open('macd_sptrndl_log.txt', 'a') as f:
             f.write(f"Control position {config.ts_macd_symbol} {formatted_current_time}")
             f.write(f"macd1 - {macd_line_1} signal1 - {signal_line_1} | macd2 - {macd_line_2} signal2 - {signal_line_2}"
