@@ -187,14 +187,17 @@ class Macd_sprtrnd_strategy_2h:
             self.order.close_open_position_market(client, trading_symbol, position_amount)
             self.order.cancel_all_open_orders(client, trading_symbol)
 
-        elif macd_line_2 < signal_line_2 and macd_line_1 < signal_line_1 and super_trnd_2 > current_price > super_trnd_1 and position_amount < 0:
+        elif super_trnd_2 > current_price > super_trnd_1 and position_amount < 0:
             # close short change supertrend
             self.order.close_open_position_market(client, trading_symbol, position_amount)
             self.order.cancel_all_open_orders(client, trading_symbol)
-        elif macd_line_2 > signal_line_2 and macd_line_1 > signal_line_1 and super_trnd_2 < current_price < super_trnd_1 and position_amount > 0:
+            print("close short position at control ")
+        elif  super_trnd_2 < current_price < super_trnd_1 and position_amount > 0:
             # close long change supertrenf
             self.order.close_open_position_market(client, trading_symbol, position_amount)
             self.order.cancel_all_open_orders(client, trading_symbol)
+            print("close long position at control ")
+
 
         # close position when indicator
 

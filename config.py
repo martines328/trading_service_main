@@ -68,7 +68,7 @@ ts_macd_interval_start_time = '15 day ago UTC'
 ts_macd_pos_amount = 50
 ts_macd_leverage = 7
 ts_macd_delay_time = 3600  #300
-ts_macd_position_delay_time = 60  #60
+ts_macd_position_delay_time = 300  #60
 ts_macd_trailing_activation_percent = 2.5
 ts_macd_callback_rate = 2.4
 
