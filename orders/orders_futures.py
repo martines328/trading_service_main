@@ -96,8 +96,26 @@ class Orders():
                 side='SELL' if current_position > 0 else 'BUY',
                 type='MARKET',
                 quantity=abs(current_position),
+                recvWindow=config.recvWindow,
+                timestamp=config.timestamp
             )
             print(f"Market order placed to close position: {order}")
         else:
             print("No open position to close.")
 
+    def close_open_position_profit(self, client, symbol, quantity ):
+        position = client.futures_position_information(symbol=symbol)
+        current_position = float(position[0]['positionAmt'])
+        # Close the position with a market order
+        if current_position != 0:
+            order = client.futures_create_order(
+                symbol=symbol,
+                side='SELL' if quantity > 0 else 'BUY',
+                type='MARKET',
+                quantity=abs(quantity),
+                recvWindow=config.recvWindow,
+                timestamp=config.timestamp
+            )
+            print(f"Market order placed to close position: {order}")
+        else:
+            print("No open position to close.")

@@ -44,10 +44,10 @@ class Indicators:
         ema_list = ema.values.tolist()
         return ema_list[-1]
 
-    def rsi(self, number: int):
-        rsi_data = ta.rsi(self.df['close'], 14)
+    def rsi(self, lenght, number: int, round_num=2):
+        rsi_data = ta.rsi(self.df['close'], lenght)
         rsi_list = rsi_data.values.tolist()
-        return rsi_list[-number]
+        return round(rsi_list[-number],round_num)
 
     def supertrend(self, number, length: int, multiplier: float, round_number=4):
         sptrnd = ta.supertrend(self.df["high"], self.df["low"], self.df["close"],
