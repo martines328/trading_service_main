@@ -70,10 +70,10 @@ class SuperTrend_Rsi_Strategy:
                                               round_number=1))
 
                     ### Trading logic
-                    if super_trnd_1 < self.current_price < super_trnd_2 and super_trnd_1 < super_trnd_2:
+                    if super_trnd_1 < self.current_price < super_trnd_2 :
                         self.long_strsi_position(binance_client)
 
-                    if super_trnd_1 > self.current_price > super_trnd_2 and super_trnd_1 > super_trnd_2:
+                    if super_trnd_1 > self.current_price > super_trnd_2 :
                         self.short_strsi_position(binance_client)
 
                     else:
