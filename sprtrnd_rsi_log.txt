@@ -1,0 +1,5 @@
+Waiting position BTCUSDT 08-23 22:16:46  current_price - 63542.11 | supertrend1 - 61114.86 supertrend1 - 61114.86
+Control position BTCUSDT 08-23 22:20:current_price - 63679.99 | supertrend1 - 49975.7 supertrend2 - 49975.7
+Position profit ** 1.6218
+Waiting position BTCUSDT 08-24 11:07:27  current_price - 64238.99 | supertrend1 - 53047.7 supertrend1 - 53047.7
+Waiting position BTCUSDT 08-24 20:41:05  current_price - 64184.2 | supertrend1 - 63644.21 supertrend1 - 63644.21
