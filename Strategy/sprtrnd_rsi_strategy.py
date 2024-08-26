@@ -177,13 +177,12 @@ class SuperTrend_Rsi_Strategy:
             self.order.close_open_position_market(client, trading_symbol, position_amount)
             self.order.cancel_all_open_orders(client, trading_symbol)
 
-        current_time = datetime.now()
-        if current_time % config.delayt_time_control_position == 0:
-            formatted_current_time = current_time.strftime("%m-%d %H:%M:")
-            print(f"Control position {config.trading_symbol} {formatted_current_time} current_price - {current_price}"
-                  f" |  Position profit - {round(unrealized_profit, 5)}\n")
-            with open('sprtrnd_rsi_log.txt', 'a') as f:
-                f.write(f"Control position {config.trading_symbol} {formatted_current_time}")
-                f.write(
-                    f"current_price - {current_price} | supertrend1 - {super_trnd_2} supertrend2 - {super_trnd_2}\n")
-                f.write(f"Position profit ** {round(unrealized_profit, 5)}\n")
+        # current_time = datetime.now()
+        # formatted_current_time = current_time.strftime("%m-%d %H:%M:")
+        #     print(f"Control position {config.trading_symbol} {formatted_current_time} current_price - {current_price}"
+        #           f" |  Position profit - {round(unrealized_profit, 5)}\n")
+        #     with open('sprtrnd_rsi_log.txt', 'a') as f:
+        #         f.write(f"Control position {config.trading_symbol} {formatted_current_time}")
+        #         f.write(
+        #             f"current_price - {current_price} | supertrend1 - {super_trnd_2} supertrend2 - {super_trnd_2}\n")
+        #         f.write(f"Position profit ** {round(unrealized_profit, 5)}\n")
