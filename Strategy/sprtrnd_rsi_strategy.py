@@ -58,6 +58,8 @@ class SuperTrend_Rsi_Strategy:
                     time.sleep(config.delayt_time - time.time() % config.delayt_time)
                     binance_client = self.client.create_binance_client()
 
+                    last_kline_price = self.data_frame.get_last_kline_price(data_frame)
+
                     super_trnd_1 = float(
                         indicators.supertrend(1, length=super_trend_lenght, multiplier=super_trend_multiplier,
                                               round_number=2))
@@ -67,11 +69,10 @@ class SuperTrend_Rsi_Strategy:
                     current_price = float(self.price_service.get_current_price(config.trading_symbol))
 
                     ### Trading logic
-                    if super_trnd_1 < current_price < super_trnd_2:
+                    if super_trnd_2 > last_kline_price and super_trnd_1 < current_price:
                         self.long_strsi_position(binance_client)
                         continue
-
-                    if super_trnd_1 > current_price > super_trnd_2:
+                    if super_trnd_2 < last_kline_price and super_trnd_1 > current_price:
                         self.short_strsi_position(binance_client)
                         continue
 
@@ -83,7 +84,7 @@ class SuperTrend_Rsi_Strategy:
                         with open('sprtrnd_rsi_log.txt', 'a') as f:
                             f.write(f"Waiting position {config.trading_symbol} {formatted_current_time}  ")
                             f.write(
-                                f"current_price - {current_price} | supertrend1 - {super_trnd_2} supertrend1 - {super_trnd_2}\n")
+                                f"current_price - {current_price} | supertrend_1 - {super_trnd_1} supertrend_2 - {super_trnd_2}\n")
 
                 binance_client.close_connection()
 
@@ -148,6 +149,7 @@ class SuperTrend_Rsi_Strategy:
                                                                                                   trading_symbol,
                                                                                                   config.round_num)
         current_price = float(self.price_service.get_current_price(config.trading_symbol))
+        last_kline_price = self.data_frame.get_last_kline_price(data_frame)
 
         super_trnd_1 = float(
             indicators.supertrend(1, length=super_trend_lenght, multiplier=super_trend_multiplier, round_number=1))
@@ -159,11 +161,11 @@ class SuperTrend_Rsi_Strategy:
         rsi_3 = float(indicators.rsi(lenght=14, number=3, round_num=2))
 
         # CLOSE POSITION WITH CHANGE SUPERTREND
-        if position_amount > 0 and super_trnd_2 < current_price < super_trnd_1 and super_trnd_1 > super_trnd_2:
+        if position_amount > 0 and  super_trnd_2 < last_kline_price and super_trnd_1 > current_price and super_trnd_1 > super_trnd_2:
             # close long change supertrend
             self.order.close_open_position_market(client, trading_symbol, position_amount)
             self.order.cancel_all_open_orders(client, trading_symbol)
-        if position_amount < 0 and super_trnd_2 > current_price > super_trnd_1 and super_trnd_1 < super_trnd_2:
+        if position_amount < 0 and super_trnd_2 > last_kline_price and super_trnd_1 < current_price and super_trnd_1 < super_trnd_2:
             # close short change supertrend
             self.order.close_open_position_market(client, trading_symbol, position_amount)
             self.order.cancel_all_open_orders(client, trading_symbol)

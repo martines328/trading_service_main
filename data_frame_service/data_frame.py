@@ -7,6 +7,13 @@ class Data_frame():
         pass
 
 
+
+    def get_last_kline_price(self, df):
+        df['close'] = df['close'].astype(float)
+        close_price_last = df['close'].iloc[-1]  # Ціна закриття останньої свічки
+        close_price_prev = df['close'].iloc[-2]  # Ціна закриття передостанньої свічки
+        return close_price_prev
+
     def get_data_frame(self, client,  symbol, interval, start_time):
         bars = client.get_historical_klines(symbol, interval=interval, start_str=start_time)
 
