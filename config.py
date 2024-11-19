@@ -30,12 +30,12 @@ recvWindow = 5000
 
 # trading interval
 interval = '3m'
-start_time = '1 day ago UTC'
-delayt_time = 300  # 1800 in sec
+start_time = '10 day ago UTC'
+delayt_time = 10  # 3600 in sec
 delayt_time_control_position = 60
 # trend interval
-trend_interval = '30m'
-trend_start_time = '5 day ago UTC'
+trend_interval = '1h'
+trend_start_time = '10 day ago UTC'
 
 position_quantity = 0.002
 trading_symbol = 'BTCUSDT'
@@ -74,6 +74,6 @@ ts_macd_manage_pos_interval = '2h'
 ts_macd_manage_start_time = '10 day ago UTC'
 ts_macd_manage_delayt_time = 7200  # in sec for 1hours manage
 ts_macd_trailing_delayt_time = 300  # in sec for 1hours manage
-ts_macd_profit_delay_time = 2  # in sec for 1hours manage
+ts_macd_profit_delay_time = 5  # in sec for 1hours manage
 
 ### SuperTrend Rsi STrategy

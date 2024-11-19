@@ -119,3 +119,26 @@ class Orders():
             print(f"Market order placed to close position: {order}")
         else:
             print("No open position to close.")
+
+    def placeStopLossOrder(self, client, symbol, quantity, stop_loss_price, side):
+        """
+        Розміщує стоп-лос ордер для закриття позиції при досягненні стоп-лос ціни.
+
+        :param client: Об'єкт клієнта Binance
+        :param symbol: Символ торгової пари (наприклад, 'BTCUSDT')
+        :param quantity: Кількість активів
+        :param stop_loss_price: Ціна для стоп-лос ордера
+        :param side: 'SELL' для лонгів або 'BUY' для шортів
+        """
+        order = client.futures_create_order(
+            symbol=symbol,
+            side=side,
+            type='STOP_MARKET',
+            stopPrice=stop_loss_price,
+            quantity=quantity,
+            reduceOnly=True,
+            recvWindow=config.recvWindow,
+            timestamp=config.timestamp
+        )
+        print(f"Stop-loss order placed: {order}")
+        return order

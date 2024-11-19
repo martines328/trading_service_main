@@ -169,8 +169,8 @@ class ControlPosition:
                 time.sleep(config.ts_macd_profit_delay_time - time.time() % config.ts_macd_profit_delay_time)
 
                 first_block_percent = 0.01
-                second_block_percent = 6.0
-                last_block_percent = 10.0
+                second_block_percent = 3.0
+                last_block_percent = 6.0
 
                 position_amount, entry_price, unrealized_profit = self.future_action.future_position_data(client,
                                                                                                           symbol,

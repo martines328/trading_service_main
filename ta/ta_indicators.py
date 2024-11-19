@@ -24,40 +24,42 @@ class Indicators:
         macd = last_macd_data[-macd_num]
         signal = last_signal_data[-signal_num]
 
-        if macd != None and signal!=None:
+        if macd != None and signal != None:
             logging.info("Calculated macd was successful")
         else:
             logging.warning("Macd wasn't calculated, check parametrs")
 
         return macd, signal
 
-
-    def mfi(self, lenght:int, number:int):
-        mfi = ta.mfi(self.df["high"], self.df["low"], self.df["close"],self.df["volume"], lenght)
+    def mfi(self, lenght: int, number: int):
+        mfi = ta.mfi(self.df["high"], self.df["low"], self.df["close"], self.df["volume"], lenght)
         mfi_list = mfi.values.tolist()
         return mfi_list[-number]
 
-
+    def atr(self, lenght: int, number: int):
+        atr = ta.atr(self.df["high"], self.df["low"], self.df["close"], lenght)
+        atr_list = atr.values.tolist()
+        return float(atr_list[-number])
 
     def ema(self, lenght: int):
         ema = ta.ema(self.df['close'], lenght)
         ema_list = ema.values.tolist()
-        return ema_list[-1]
+        return float(ema_list[-1])
 
     def rsi(self, lenght, number: int, round_num=2):
         rsi_data = ta.rsi(self.df['close'], lenght)
         rsi_list = rsi_data.values.tolist()
-        return round(rsi_list[-number],round_num)
+        return round(rsi_list[-number], round_num)
 
     def supertrend(self, number, length: int, multiplier: float, round_number=4):
         sptrnd = ta.supertrend(self.df["high"], self.df["low"], self.df["close"],
                                length=length, multiplier=multiplier)
         spr = sptrnd[f'SUPERT_{length}_{multiplier}'].values.tolist()
         # spr = sptrnd['SUPERT_10_1.5'].values.tolist()
-        #supertr = "{:.4f}".format(spr[-number])
+        # supertr = "{:.4f}".format(spr[-number])
         supertr = round(spr[-number], round_number)
 
-        if supertr != None :
+        if supertr != None:
             logging.info("Calculated supertrend was successful")
         else:
             logging.warning("Supertrend wasn't calculated, check parametrs")
@@ -74,12 +76,9 @@ class Indicators:
         # return 1
         return stcf
 
-
-
-    def mcgnd(self,length=14):
+    def mcgnd(self, length=14):
         mcginley = ta.mcgd(self.df['close'], n=length)
         print("d")
-
 
     def williamsR(self, number):
         willr = ta.willr(self.df["high"], self.df["low"], self.df["close"], )
@@ -98,3 +97,9 @@ class Indicators:
             logging.warning("CCI wasn't calculated, check parametrs")
 
         return numb_cci
+
+    def adx_di(self, number,lenght=14):
+        adx_ind = ta.adx(self.df["high"], self.df["low"], self.df["close"],lenght )
+        adx = adx_ind[f"ADX_{lenght}"].values.tolist()
+        numb_adx = adx[-number]
+        return numb_adx
