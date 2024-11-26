@@ -31,7 +31,7 @@ recvWindow = 5000
 # trading interval
 interval = '3m'
 start_time = '10 day ago UTC'
-delayt_time = 10  # 3600 in sec
+delayt_time = 3600  # 3600 in sec
 delayt_time_control_position = 60
 # trend interval
 trend_interval = '1h'
@@ -43,6 +43,9 @@ leverage = 7
 round_num = 2
 trailing_activation_percent = 1.0
 callback_rate = 0.9
+cooldown_hours = 2
+cooldown_period = 3600 * cooldown_hours
+
 #
 # file_name_to_save = "result.txt"
 # log_file = "logging.txt"

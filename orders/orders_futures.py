@@ -138,7 +138,6 @@ class Orders():
             quantity=quantity,
             reduceOnly=True,
             recvWindow=config.recvWindow,
-            timestamp=config.timestamp
-        )
+            timestamp=config.timestamp)
         print(f"Stop-loss order placed: {order}")
         return order
