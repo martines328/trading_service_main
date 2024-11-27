@@ -16,8 +16,8 @@ class SuperTrend_Rsi_Strategy:
     def __init__(self):
         self.data_frame = Data_frame()
         self.price_service = Price_service()
-        # self.client = Client_Manager(config.api_key_real, config.api_secret_real, testnet=False)
-        self.client = Client_Manager(config.BINANCE_API_KEY_testnet, config.BINANCE_SECRET_KEY_testnet, testnet=True)
+        self.client = Client_Manager(config.api_key_real, config.api_secret_real, testnet=False)
+        # self.client = Client_Manager(config.BINANCE_API_KEY_testnet, config.BINANCE_SECRET_KEY_testnet, testnet=True)
         self.future_action = Clietn_future_action()
         self.order = Orders()
         self.control_position = ControlPosition()
@@ -28,7 +28,7 @@ class SuperTrend_Rsi_Strategy:
         print(f'Coin - {config.trading_symbol}, quantity - {config.position_quantity}')
         self.future_action.change_leverage(binance_client, config.trading_symbol, config.leverage)
         self.future_action.client_future_balance(binance_client)
-        print(f'Trading interval - {config.trend_interval}')
+        print(f'Trading interval - {config.trend_interval_1h}')
         binance_client.close_connection()
 
     def strategy_trading(self):
@@ -40,16 +40,20 @@ class SuperTrend_Rsi_Strategy:
 
         self.last_trade_time = 0
 
-
         while True:
             try:
                 binance_client = self.client.create_binance_client()
-                data_frame = self.data_frame.get_data_frame(binance_client, config.trading_symbol,
-                                                            config.trend_interval, config.trend_start_time)
-                indicators = Indicators(data_frame)
+                data_frame_1h = self.data_frame.get_data_frame(binance_client, config.trading_symbol,
+                                                               config.trend_interval_1h, config.trend_start_time)
+
+                data_frame_15m = self.data_frame.get_data_frame(binance_client, config.trading_symbol,
+                                                                config.trend_interval_15m, config.trend_start_time)
+
+                indicators_15m = Indicators(data_frame_15m)
+                indicators = Indicators(data_frame_1h)
 
                 if self.future_action.check_open_position_bool(binance_client, config.trading_symbol):
-                    self.control_open_position(client=binance_client, data_frame=data_frame, indicators=indicators, )
+                    self.control_open_position(client=binance_client, data_frame=data_frame_1h, indicators=indicators, )
                     time.sleep(config.delayt_time_control_position - time.time() % config.delayt_time_control_position)
                     binance_client.close_connection()
 
@@ -58,21 +62,21 @@ class SuperTrend_Rsi_Strategy:
 
                     binance_client.close_connection()
 
-                    current_time = time.time()
-                    # Перевірка на охолодження
-                    if current_time - self.last_trade_time < config.cooldown_period:
-                        print("Cooldown active. Waiting to open new position...")
-                        time.sleep(10)  # Очікуємо перед повторною перевіркою
-                        continue
+                    # current_time = time.time()
+                    # # Перевірка на охолодження
+                    # if current_time - self.last_trade_time < config.cooldown_period:
+                    #     print("Cooldown active. Waiting to open new position...")
+                    #     time.sleep(10)  # Очікуємо перед повторною перевіркою
+                    #     continue
 
                     time.sleep(config.delayt_time - time.time() % config.delayt_time)
+
                     binance_client = self.client.create_binance_client()
 
                     # last_kline_price = self.data_frame.get_last_kline_price(data_frame)
 
+                    #################### 1H indicators
                     rsi_1 = float(indicators.rsi(lenght=14, number=1, round_num=2))
-                    # rsi_2 = float(indicators.rsi(lenght=14, number=2, round_num=2))
-                    # rsi_3 = float(indicators.rsi(lenght=14, number=3, round_num=2))
 
                     ema50 = float(indicators.ema(lenght=50))
                     ema200 = float(indicators.ema(lenght=200))
@@ -83,9 +87,17 @@ class SuperTrend_Rsi_Strategy:
                     super_trnd_1 = float(
                         indicators.supertrend(1, length=super_trend_lenght, multiplier=super_trend_multiplier,
                                               round_number=2))
-                    # super_trnd_2 = float(
-                    #     indicators.supertrend(2, length=super_trend_lenght, multiplier=super_trend_multiplier,
-                    #                           round_number=2))
+
+                    ############### 15M indicators
+
+                    super_trend_1_15m = float(
+                        indicators_15m.supertrend(1, length=super_trend_lenght, multiplier=super_trend_multiplier,
+                                                  round_number=2))
+
+                    rsi_1_15m = float(indicators_15m.rsi(lenght=14, number=1, round_num=2))
+
+                    adx_15m = float(indicators_15m.adx_di(1))
+
                     current_price = float(self.price_service.get_current_price(config.trading_symbol))
 
                     ### Trading logic
@@ -94,23 +106,24 @@ class SuperTrend_Rsi_Strategy:
 
                     atr_signal = atr > atr_threshold
                     adx_signal = adx > adx_threshold
+                    adx_filter = adx_15m > adx_threshold
 
                     ### long
                     if (atr_signal == True and adx_signal == True and current_price > ema50 > ema200
-                            and rsi_1 < 70 and current_price > super_trnd_1):
+                            and rsi_1 < 70 and current_price > super_trnd_1 and current_price > super_trend_1_15m
+                            and rsi_1_15m < 70 and adx_filter == True):
                         self.long_strsi_position(binance_client)
-                        self.set_stop_loss(self.client, current_price, atr, "long", config.round_num)
-                        self.last_trade_time = current_time  # Оновлення часу останньої угоди
-
+                        # self.set_stop_loss(self.client, current_price, atr, "long", config.round_num)
+                        # self.last_trade_time = current_time  # Оновлення часу останньої угоди
 
                         continue
                     ###short
                     if (atr_signal == True and adx_signal == True and current_price < ema50 < ema200
-                            and rsi_1 > 30 and current_price < super_trnd_1):
+                            and rsi_1 > 30 and current_price < super_trnd_1 and adx_filter == True and rsi_1_15m > 30
+                            and current_price < super_trend_1_15m):
                         self.short_strsi_position(binance_client)
-                        self.set_stop_loss(self.client, current_price, atr, "short", config.round_num)
-                        self.last_trade_time = current_time  # Оновлення часу останньої угоди
-
+                        # self.set_stop_loss(self.client, current_price, atr, "short", config.round_num)
+                        # self.last_trade_time = current_time  # Оновлення часу останньої угоди
                         continue
 
 
@@ -247,7 +260,6 @@ class SuperTrend_Rsi_Strategy:
         """
         atr_multiplier = 3
 
-
         if position == "long":
             stop_loss_price = current_price - (atr * atr_multiplier)
         elif position == "short":
@@ -264,20 +276,16 @@ class SuperTrend_Rsi_Strategy:
         print(f"Stop Loss Set at: {stop_loss_price} for {position}")
         return stop_loss_order
 
-
-
-
     def test_futures_orders(self):
         try:
             binance_client = self.client.create_binance_client()
             data_frame = self.data_frame.get_data_frame(binance_client, config.trading_symbol,
-                                                        config.trend_interval, config.trend_start_time)
+                                                        config.trend_interval_1h, config.trend_start_time)
             indicators = Indicators(data_frame)
             current_time = time.time()
 
             atr = float(indicators.atr(lenght=14, number=1))
             adx = float(indicators.adx_di(1))
-
 
             current_price = float(self.price_service.get_current_price(config.trading_symbol))
 

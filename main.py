@@ -25,8 +25,8 @@ def main():
     # thread3.start()
     # logging.info("Start strategy thread")
 
-    # thread3 = threading.Thread(target=supertreend_rsi_strategy.strategy_trading())
-    thread3 = threading.Thread(target=supertreend_rsi_strategy.test_futures_orders())
+    thread3 = threading.Thread(target=supertreend_rsi_strategy.strategy_trading())
+    # thread3 = threading.Thread(target=supertreend_rsi_strategy.test_futures_orders())
     thread3.start()
     logging.info("Start strategy thread")
 
