@@ -31,7 +31,7 @@ recvWindow = 5000
 # trading interval
 interval = '3m'
 start_time = '10 day ago UTC'
-delayt_time = 10  # 3600 in sec
+delayt_time = 3600  # 3600 in sec
 delayt_time_control_position = 60
 # trend interval
 trend_interval_1h = '1h'
