@@ -32,7 +32,7 @@ class SuperTrend_Rsi_Strategy:
         binance_client.close_connection()
 
     def strategy_trading(self):
-        print("Start trading 2H strategy")
+        print("Start trading strategy")
         self.synchronize_startegy()
 
         super_trend_lenght = 10
@@ -102,7 +102,11 @@ class SuperTrend_Rsi_Strategy:
 
                     ### Trading logic
                     atr_threshold = 450  # значення можна змінювати залеєно від значення ціний
-                    adx_threshold = 25
+                    adx_threshold = 19.5
+                    rsi_1_15m_threshold_long = 75
+                    rsi_1_15m_threshold_short = 25
+                    rsi_threshold_long = 70
+                    rsi_threshold_short = 30
 
                     atr_signal = atr > atr_threshold
                     adx_signal = adx > adx_threshold
@@ -110,17 +114,16 @@ class SuperTrend_Rsi_Strategy:
 
                     ### long
                     if (atr_signal == True and adx_signal == True and current_price > ema50 > ema200
-                            and rsi_1 < 70 and current_price > super_trnd_1 and current_price > super_trend_1_15m
-                            and rsi_1_15m < 70 and adx_filter == True):
+                            and rsi_1 < rsi_threshold_long and current_price > super_trnd_1 and current_price > super_trend_1_15m
+                            and rsi_1_15m < rsi_1_15m_threshold_long and adx_filter == True):
                         self.long_strsi_position(binance_client)
                         # self.set_stop_loss(self.client, current_price, atr, "long", config.round_num)
                         # self.last_trade_time = current_time  # Оновлення часу останньої угоди
-
                         continue
                     ###short
                     if (atr_signal == True and adx_signal == True and current_price < ema50 < ema200
-                            and rsi_1 > 30 and current_price < super_trnd_1 and adx_filter == True and rsi_1_15m > 30
-                            and current_price < super_trend_1_15m):
+                            and rsi_1 > rsi_threshold_short and current_price < super_trnd_1 and adx_filter == True
+                            and rsi_1_15m > rsi_1_15m_threshold_short and current_price < super_trend_1_15m):
                         self.short_strsi_position(binance_client)
                         # self.set_stop_loss(self.client, current_price, atr, "short", config.round_num)
                         # self.last_trade_time = current_time  # Оновлення часу останньої угоди
